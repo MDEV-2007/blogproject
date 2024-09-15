@@ -1,0 +1,24 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Home | {% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        {% for post in posts %}
+        <div class="card" style="margin-top: 50px; margin-bottom: 50px;">
+            <div class="card-header">
+              {{ post.title }}
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{ post.created_at|timesince}}</h5>
+              <p class="card-text"></p>
+              <p class="card-text">{{ post.intro }}</p>
+              <p>Category | {{ post.category }}</p>
+              <a href="{% url 'post_detail' post.category.slug post.slug %}"  class="btn btn-primary" style="text-decoration: none;">More</a>
+              <!-- <a href="#">Go somewhere</a> -->
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

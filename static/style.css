@@ -1,0 +1,22 @@
+.logo a{
+    text-decoration: none;
+    font-size: 25px;
+}
+body{
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.navbars .row{
+    padding-top: 20px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 100%;
+}
+
+.navt a{
+
+    text-decoration: none;
+    padding-left: 20px;
+
+}

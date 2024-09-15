@@ -1,0 +1,54 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+   
+          
+    <div class="card" style="margin-top: 50px; margin-bottom: 50px;">
+        <div class="card-header">
+          {{ post.title }}
+        </div>
+        
+        <div class="card-body">
+          <h5 class="card-title">{{ post.created_at|timesince}}</h5>
+          <p style="text-decoration: none;" class="card-text">{{ post.body }}</p>
+          <p class="card-text">{{ post.intro }}</p>
+          <a href="{% url 'category_detail' post.category.slug %}">More{{ post.category }} news</a>
+          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+
+          <hr>
+          <div class="comment"><h1 style="text-align: center;">Comments</h1></div>
+          <div class="row d-flex justify-content-center">
+            <div class="card-body">
+                {% for comment in post.comments.all %}
+                <div class="card" style="margin-top:20px; padding-left: 20px;">
+                    <div class="name">Name : {{ comment.name }}</div>
+                    <hr>
+                    <div class="email">Email : {{ comment.email }}</div>
+                    <hr>
+                    <div class="bodys">Body : {{ comment.body }}</div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-md-8 col-lg-6">
+              <div class="card shadow-0 border" style="background-color: #f0f2f5; width: 500px;">
+                <div class="card-body p-4">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit btn btn-info">Add post</button>
+                </form>
+               
+                
+               
+              
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+{% endblock %}
